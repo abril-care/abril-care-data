@@ -1,10 +1,10 @@
 # Abril Care Data
 
-**Making care work visible through open data infrastructure.**
+**Open data infrastructure for the care economy.**
 
-The care economy generates $122 billion in annual lost economic output. 51% of Americans live in childcare deserts. Working families make six-figure career decisions with napkin math and gut instinct—while corporations have entire departments dedicated to data-driven resource allocation.
+The US loses $122 billion annually to childcare disruptions. 51% of Americans live in childcare deserts. Only 15% of eligible families receive federal childcare subsidies.
 
-This project builds the data infrastructure that care decisions deserve.
+The data to solve these problems exists—scattered across 50 state licensing systems, locked in proprietary platforms, buried in government PDFs. This project pulls it into the open.
 
 ---
 
