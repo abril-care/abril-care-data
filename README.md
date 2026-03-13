@@ -174,16 +174,6 @@ If you're working on care access, family economic security, or open data—let's
 
 ---
 
-## Context
-
-This project emerged from a simple question: why do corporations have better data infrastructure for selling software than families have for finding childcare?
-
-I spent a decade building revenue operations systems—predictive models, data pipelines, forecast accuracy at scale. After my daughter was born, I found myself at 2am building a financial model to figure out if I could afford to go back to work. The math was brutal. The data was worse.
-
-Working families deserve the same data infrastructure that corporations take for granted. This is a start.
-
----
-
 ## License
 
 MIT. Use it, build on it, make it better.
