@@ -1,256 +1,200 @@
 # Abril Care Data
 
-**Open source infrastructure for care provider data.**
+**Making care work visible through open data infrastructure.**
 
-Aggregating childcare, elder care, and disability services data across the US into a unified, accessible API.
+The care economy generates $122 billion in annual lost economic output. 51% of Americans live in childcare deserts. Working families make six-figure career decisions with napkin math and gut instinct—while corporations have entire departments dedicated to data-driven resource allocation.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+This project builds the data infrastructure that care decisions deserve.
 
 ---
 
 ## The Problem
 
-Care data in the US is fragmented across:
-- **50 state licensing systems** (each with different formats, access methods)
-- **Proprietary platforms** (Care.com, Brightwheel, etc.)
-- **Government silos** (CCDF, Medicaid HCBS, state subsidies)
+Care data in the US is fragmented, inaccessible, and serves the wrong people.
 
-Families can't find care. Researchers can't study access gaps. Developers can't build better tools.
+**Fragmented:** Provider information is scattered across 50 state licensing systems, each with different formats, update schedules, and access methods. No unified view exists.
 
-## The Solution
+**Inaccessible:** What data does exist is locked in proprietary platforms (Care.com, Brightwheel) or buried in government PDFs. Researchers can't study access gaps. Advocates can't identify deserts. Families can't make informed choices.
 
-An open data layer that:
-1. **Aggregates** provider data from public state sources
-2. **Normalizes** into a unified schema
-3. **Exposes** via a simple API
-4. **Updates** automatically
+**Serves the wrong people:** When care data is aggregated, it's typically by companies extracting value from families—not returning it to communities.
+
+The result: the people most affected by care infrastructure gaps—working mothers, communities of color, rural families—are the least equipped with data to navigate them.
 
 ---
 
-## Quick Start
+## The Vision
 
-```bash
-# Install
-pip install abril-care-data
+**Open infrastructure for care data, owned by communities, not corporations.**
 
-# Search providers
+We're building:
+
+1. **Aggregation** — Pulling provider data from public state sources into a unified, accessible format
+2. **Transparency** — Making licensing, inspection, and capacity data freely available via API
+3. **Foundation** — Creating the data layer that enables better tools: care finders, policy analysis, workforce research, subsidy optimization
+
+This is not another platform to extract family data for ad targeting. It's public infrastructure—like OpenStreetMap for care.
+
+---
+
+## Why This Matters
+
+### For Families
+
+A single mother in DC shouldn't need to call 30 providers to find one with infant availability that accepts subsidies. The data exists in state systems. It just isn't accessible.
+
+### For Researchers
+
+Understanding care deserts, workforce dynamics, and policy impacts requires data. Currently, researchers spend months on FOIA requests and manual data cleaning before analysis can begin.
+
+### For Advocates
+
+You can't fix what you can't see. Open care data enables evidence-based advocacy: showing legislators exactly where subsidies aren't reaching families, where provider shortages are acute, where the system is failing.
+
+### For Providers
+
+Small providers—especially family childcare homes—are invisible in the current ecosystem. Open data infrastructure makes them findable, helping fill the 51% of America that's a care desert.
+
+---
+
+## What We're Building
+
+### Phase 1: Provider Data Layer (Now)
+
+Aggregating licensed provider data from public state sources:
+
+| Region | Providers | Status |
+|--------|-----------|--------|
+| NYC | ~12,000 | Live |
+| DC | ~600 | In progress |
+| Maryland | ~9,000 | Next |
+| Virginia | ~7,000 | Planned |
+
+### Phase 2: Subsidy & Eligibility Data
+
+Integrating government subsidy information: who qualifies, which providers accept it, how to apply. Currently, only 15% of eligible families receive federal childcare subsidies. The data to change that exists—it's just not connected.
+
+### Phase 3: Community Tools
+
+Building on the data layer to create tools communities actually need: care finders, policy dashboards, workforce analytics, advocacy resources.
+
+---
+
+## Data Principles
+
+**Open by default.** All aggregated data is freely accessible. No paywalls, no API keys required for basic access.
+
+**Privacy-preserving.** We aggregate provider data (businesses), not family data (people). No tracking, no profiling, no extraction.
+
+**Community-governed.** As this project grows, governance should shift to the communities it serves—not remain with a single founder or organization.
+
+**Interoperable.** Standard schemas, clean APIs, easy integration. Built to be built upon.
+
+---
+
+## Technical Overview
+
+```python
 from abril import providers
 
 # Find childcare in DC
 results = providers.search(
     state="DC",
     type="childcare",
-    lat=38.9072,
-    lng=-77.0369,
-    radius_miles=5
+    accepts_subsidies=True,
+    has_infant_capacity=True
 )
 
 for provider in results:
-    print(f"{provider.name} - {provider.capacity} slots")
+    print(f"{provider.name}: {provider.capacity.infant} infant slots")
 ```
 
----
+### Architecture
 
-## Available Data
+- **Extractors**: State-specific modules that fetch data from public sources (APIs, PDFs, web portals)
+- **Schema**: Unified Pydantic models normalizing provider data across states
+- **API**: FastAPI endpoints for search, filtering, and bulk export
 
-### Currently Live
+### Current Stack
 
-| Region | Providers | Source | Updated |
-|--------|-----------|--------|---------|
-| **NYC** | ~12,000 | NYC Open Data (API) | Daily |
-| **DC** | ~600 | OSSE (PDF) | Monthly |
-
-### Coming Soon
-
-| Region | Providers | Source | ETA |
-|--------|-----------|--------|-----|
-| **Maryland** | ~9,000 | CheckCCMD | April 2026 |
-| **Virginia** | ~7,000 | VDOE | April 2026 |
-| **Texas** | ~15,000 | TX3C | May 2026 |
+| Component | Technology |
+|-----------|------------|
+| Language | Python 3.11+ |
+| Schema | Pydantic |
+| API | FastAPI |
+| Data Sources | Socrata (NYC), PDF parsing (DC), web scraping (MD, VA) |
 
 ---
 
-## Data Schema
+## Get Involved
 
-Every provider record includes:
-
-```json
-{
-  "id": "nyc-dohmh-12345",
-  "name": "Sunshine Child Care Center",
-  "type": "childcare_center",
-  "license": {
-    "number": "DC-2024-1234",
-    "status": "active",
-    "expires": "2026-12-31"
-  },
-  "location": {
-    "address": "123 Main St",
-    "city": "Washington",
-    "state": "DC",
-    "zip": "20001",
-    "coordinates": {
-      "lat": 38.9072,
-      "lng": -77.0369
-    }
-  },
-  "capacity": {
-    "total": 75,
-    "infant": 10,
-    "toddler": 20,
-    "preschool": 30,
-    "school_age": 15
-  },
-  "contact": {
-    "phone": "(202) 555-1234",
-    "email": "info@sunshine.example.com"
-  },
-  "accepts_subsidies": true,
-  "quality_rating": "Level 4",
-  "last_inspection": "2025-11-15",
-  "source": "dc_osse",
-  "updated_at": "2026-03-13T12:00:00Z"
-}
-```
-
-See [docs/schema.md](docs/schema.md) for full specification.
-
----
-
-## API Endpoints
-
-### REST API
+### Use the Data
 
 ```bash
-# Search providers
-GET /api/v1/providers?state=DC&type=childcare&lat=38.9&lng=-77.0&radius=10
-
-# Get provider by ID
-GET /api/v1/providers/{id}
-
-# Get provider inspections
-GET /api/v1/providers/{id}/inspections
-
-# Check subsidy eligibility
-POST /api/v1/eligibility/check
+pip install abril-care-data
 ```
 
-### Self-Hosted
+Documentation: [docs/](docs/)
 
-```bash
-# Run locally
-docker-compose up
+### Add a State
 
-# API available at http://localhost:8000
-```
+The highest-impact contribution is adding data from a new state. See [Adding a State](docs/adding-a-state.md).
 
----
+Priority states:
+- **Texas** — Large market, modern API (TX3C)
+- **California** — Largest market, complex system
+- **Florida** — High need, limited current coverage
 
-## Why Open Source?
+### Report Issues
 
-Care data should be **public infrastructure**, not locked in proprietary platforms.
+Found incorrect data? Missing providers? [Open an issue](https://github.com/abril-care/abril-care-data/issues).
 
-Open data enables:
-- **Researchers** to study care access and outcomes
-- **Policymakers** to see where subsidies are (and aren't) reaching families
-- **Developers** to build tools without recreating data pipelines
-- **Families** to find care without hitting paywalls
+### Spread the Word
 
----
-
-## Project Structure
-
-```
-abril-care-data/
-├── src/
-│   ├── extractors/           # State-specific data extractors
-│   │   ├── nyc_dohmh.py      # NYC Open Data (API)
-│   │   ├── dc_osse.py        # DC OSSE (PDF parsing)
-│   │   ├── md_checkcc.py     # Maryland (web scraping)
-│   │   └── va_vdoe.py        # Virginia (web scraping)
-│   ├── transformers/         # Data cleaning & normalization
-│   ├── schema/               # Pydantic models
-│   └── api/                  # FastAPI application
-├── data/
-│   └── samples/              # Sample data for testing
-├── docs/
-│   ├── schema.md             # Data schema specification
-│   ├── adding-a-state.md     # How to add a new state
-│   └── architecture.md       # System design
-├── tests/
-├── docker-compose.yml
-└── pyproject.toml
-```
-
----
-
-## Contributing
-
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-### Priority Areas
-
-1. **Add more states** - Each state has different data sources. [Guide →](docs/adding-a-state.md)
-2. **Improve data quality** - Geocoding, deduplication, validation
-3. **Build integrations** - FHIR export, Google Sheets, Airtable
-
-### Good First Issues
-
-Look for issues tagged [`good first issue`](https://github.com/abril-care/abril-care-data/labels/good%20first%20issue).
+If you're working on care access, family economic security, or open data—let's connect. This infrastructure is only valuable if people build on it.
 
 ---
 
 ## Roadmap
 
-### Q2 2026
-- [x] NYC data via Open Data API
-- [x] DC data via OSSE PDF parsing
-- [ ] Maryland data via CheckCCMD scraping
-- [ ] Virginia data via VDOE scraping
-- [ ] Public REST API
+### 2026 Q2
+- [x] NYC provider data (Open Data API)
+- [ ] DC provider data (OSSE PDF parsing)
+- [ ] Maryland provider data (CheckCCMD)
+- [ ] Public API launch
 
-### Q3 2026
-- [ ] Subsidy eligibility engine (CCDF calculator)
-- [ ] Texas data (TX3C API)
-- [ ] California data (CalSAWS)
+### 2026 Q3
+- [ ] Virginia, Texas expansion
+- [ ] Subsidy eligibility engine
 - [ ] Provider availability tracking
 
-### Q4 2026
-- [ ] FHIR-compatible export
-- [ ] Real-time availability via provider integrations
-- [ ] Quality ratings integration (QRIS)
+### 2026 Q4
+- [ ] California integration
+- [ ] Research partnership pilots
+- [ ] Community governance framework
 
 ---
 
-## Related Projects
+## Context
 
-- [NYC Open Data - Childcare Centers](https://data.cityofnewyork.us/Health/Childcare-Centers/tdif-34xu)
-- [data.ny.gov - Child Care Regulated Programs](https://data.ny.gov/Human-Services/Child-Care-Regulated-Programs/cb42-qumz)
-- [ChildCare Aware](https://www.childcareaware.org/) - National referral network
+This project emerged from a simple question: why do corporations have better data infrastructure for selling software than families have for finding childcare?
+
+I spent a decade building revenue operations systems—predictive models, data pipelines, forecast accuracy at scale. After my daughter was born, I found myself at 2am building a financial model to figure out if I could afford to go back to work. The math was brutal. The data was worse.
+
+Working families deserve the same data infrastructure that corporations take for granted. This is a start.
 
 ---
 
 ## License
 
-MIT License. See [LICENSE](LICENSE).
+MIT. Use it, build on it, make it better.
 
 ---
 
-## Acknowledgments
+## Links
 
-Built with support from:
-- NYC Open Data
-- State licensing agencies
-- The open source community
-
----
-
-## Contact
-
-- **GitHub Issues:** [Report bugs or request features](https://github.com/abril-care/abril-care-data/issues)
-- **Discussions:** [Ask questions or share ideas](https://github.com/abril-care/abril-care-data/discussions)
-- **Email:** [hello@abrilcare.com](mailto:hello@abrilcare.com)
+- **Repository**: [github.com/abril-care/abril-care-data](https://github.com/abril-care/abril-care-data)
+- **Issues**: [Report bugs or request features](https://github.com/abril-care/abril-care-data/issues)
+- **Contact**: hello@abrilcare.com
 
 ---
 
