@@ -58,16 +58,17 @@ Small providers—especially family childcare homes—are invisible in the curre
 
 ## What We're Building
 
-### Phase 1: Provider Data Layer (Now)
+### Phase 1: Provider Data Layer (Live)
 
-Aggregating licensed provider data from public state sources:
+Aggregated licensed provider data from public state sources:
 
 | Region | Providers | Status |
 |--------|-----------|--------|
 | NYC | ~12,000 | Live |
-| DC | ~600 | In progress |
-| Maryland | ~9,000 | Next |
-| Virginia | ~7,000 | Planned |
+| DC | ~600 | Live |
+| Maryland | ~9,000 | Live |
+| Virginia | ~7,000 | Live |
+| **Total** | **28,000+** | **Available** |
 
 ### Phase 2: Subsidy & Eligibility Data
 
@@ -157,13 +158,14 @@ If you're working on care access, family economic security, or open data—let's
 ## Roadmap
 
 ### 2026 Q2
-- [x] NYC provider data (Open Data API)
-- [ ] DC provider data (OSSE PDF parsing)
-- [ ] Maryland provider data (CheckCCMD)
+- [x] NYC provider data (12,000+ providers)
+- [x] DC provider data (600+ providers)
+- [x] Maryland provider data (9,000+ providers)
+- [x] Virginia provider data (7,000+ providers)
 - [ ] Public API launch
 
 ### 2026 Q3
-- [ ] Virginia, Texas expansion
+- [ ] Texas expansion (TX3C API)
 - [ ] Subsidy eligibility engine
 - [ ] Provider availability tracking
 
