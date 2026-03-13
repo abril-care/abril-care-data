@@ -1,0 +1,117 @@
+[
+  {
+    "id": "nyc-dohmh-1001",
+    "source_id": "1001",
+    "source": "nyc_dohmh",
+    "name": "Bright Beginnings Child Care Center",
+    "type": "childcare_center",
+    "license": {
+      "number": "NYC-2024-1001",
+      "type": "center",
+      "status": "active",
+      "expires": "2026-12-31"
+    },
+    "location": {
+      "address_line1": "123 Atlantic Avenue",
+      "city": "Brooklyn",
+      "state": "NY",
+      "zip_code": "11201",
+      "county": "BROOKLYN",
+      "lat": 40.6892,
+      "lng": -73.9857
+    },
+    "capacity": {
+      "total": 75,
+      "infant": 10,
+      "toddler": 20,
+      "preschool": 30,
+      "school_age": 15
+    },
+    "contact": {
+      "phone": "(718) 555-0101"
+    },
+    "accepts_subsidies": true,
+    "quality_rating": "QUALITY_RATED",
+    "last_inspection": "2025-11-15",
+    "violations_count": 0,
+    "updated_at": "2026-03-13T12:00:00Z",
+    "data_quality_score": 0.95
+  },
+  {
+    "id": "nyc-dohmh-1002",
+    "source_id": "1002",
+    "source": "nyc_dohmh",
+    "name": "Little Stars Learning Center",
+    "type": "childcare_center",
+    "license": {
+      "number": "NYC-2024-1002",
+      "type": "center",
+      "status": "active",
+      "expires": "2027-03-15"
+    },
+    "location": {
+      "address_line1": "456 Main Street",
+      "city": "Queens",
+      "state": "NY",
+      "zip_code": "11375",
+      "county": "QUEENS",
+      "lat": 40.7214,
+      "lng": -73.8460
+    },
+    "capacity": {
+      "total": 50,
+      "infant": 8,
+      "toddler": 12,
+      "preschool": 20,
+      "school_age": 10
+    },
+    "contact": {
+      "phone": "(718) 555-0102",
+      "email": "info@littlestars.example.com"
+    },
+    "accepts_subsidies": true,
+    "quality_rating": "QUALITY_RATED",
+    "last_inspection": "2025-10-20",
+    "violations_count": 1,
+    "updated_at": "2026-03-13T12:00:00Z",
+    "data_quality_score": 0.92
+  },
+  {
+    "id": "nyc-dohmh-1003",
+    "source_id": "1003",
+    "source": "nyc_dohmh",
+    "name": "Sunshine Day Care",
+    "type": "childcare_center",
+    "license": {
+      "number": "NYC-2024-1003",
+      "type": "center",
+      "status": "active",
+      "expires": "2026-08-01"
+    },
+    "location": {
+      "address_line1": "789 Park Avenue",
+      "city": "Manhattan",
+      "state": "NY",
+      "zip_code": "10021",
+      "county": "MANHATTAN",
+      "lat": 40.7694,
+      "lng": -73.9654
+    },
+    "capacity": {
+      "total": 100,
+      "infant": 15,
+      "toddler": 25,
+      "preschool": 40,
+      "school_age": 20
+    },
+    "contact": {
+      "phone": "(212) 555-0103",
+      "website": "https://sunshinedaycare.example.com"
+    },
+    "accepts_subsidies": false,
+    "last_inspection": "2025-09-10",
+    "violations_count": 0,
+    "updated_at": "2026-03-13T12:00:00Z",
+    "data_quality_score": 0.88
+  }
+]
