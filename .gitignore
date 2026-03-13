@@ -47,8 +47,9 @@ data/cache/
 *.sqlite
 *.db
 
-# Keep sample data
+# Keep sample data and provider data
 !data/samples/
+!data/providers/
 
 # Logs
 *.log

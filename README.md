@@ -64,13 +64,13 @@ Aggregating licensed provider data from all 50 states into a unified, accessible
 
 **Current coverage:**
 
-| Region | Providers | Status |
-|--------|-----------|--------|
-| NYC | ~12,000 | Live |
-| DC | ~600 | Live |
-| Maryland | ~9,000 | Live |
-| Virginia | ~7,000 | Live |
-| **Total** | **28,000+** | **Available** |
+| State | Providers | Data |
+|-------|----------:|------|
+| New York | 16,710 | [ny_providers.json](data/providers/ny_providers.json) |
+| Virginia | 5,185 | [va_providers.json](data/providers/va_providers.json) |
+| Maryland | 1,950 | [md_providers.json](data/providers/md_providers.json) |
+| DC | 549 | [dc_providers.json](data/providers/dc_providers.json) |
+| **Total** | **24,394** | **Available now** |
 
 **Expanding to:** Texas, California, Florida, and all 50 states. Each state has public licensing data—it just needs to be aggregated.
 
@@ -159,7 +159,7 @@ If you're working on care access, family economic security, or open data—let's
 ## Roadmap
 
 ### 2026 Q2 — Foundation
-- [x] NYC, DC, Maryland, Virginia (28,000+ providers)
+- [x] New York, DC, Maryland, Virginia (24,394 providers)
 - [ ] Public API launch
 - [ ] Texas, Florida, California
 
