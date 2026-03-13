@@ -58,9 +58,11 @@ Small providers—especially family childcare homes—are invisible in the curre
 
 ## What We're Building
 
-### Phase 1: Provider Data Layer (Live)
+### Phase 1: Provider Data Layer
 
-Aggregated licensed provider data from public state sources:
+Aggregating licensed provider data from all 50 states into a unified, accessible format.
+
+**Current coverage:**
 
 | Region | Providers | Status |
 |--------|-----------|--------|
@@ -69,6 +71,8 @@ Aggregated licensed provider data from public state sources:
 | Maryland | ~9,000 | Live |
 | Virginia | ~7,000 | Live |
 | **Total** | **28,000+** | **Available** |
+
+**Expanding to:** Texas, California, Florida, and all 50 states. Each state has public licensing data—it just needs to be aggregated.
 
 ### Phase 2: Subsidy & Eligibility Data
 
@@ -138,12 +142,9 @@ Documentation: [docs/](docs/)
 
 ### Add a State
 
-The highest-impact contribution is adding data from a new state. See [Adding a State](docs/adding-a-state.md).
+Every state has public provider licensing data. The highest-impact contribution is adding a new state. See [Adding a State](docs/adding-a-state.md).
 
-Priority states:
-- **Texas** — Large market, modern API (TX3C)
-- **California** — Largest market, complex system
-- **Florida** — High need, limited current coverage
+**Next priorities:** Texas, California, Florida, Illinois, Pennsylvania, Ohio—covering 50% of the US population.
 
 ### Report Issues
 
@@ -157,20 +158,18 @@ If you're working on care access, family economic security, or open data—let's
 
 ## Roadmap
 
-### 2026 Q2
-- [x] NYC provider data (12,000+ providers)
-- [x] DC provider data (600+ providers)
-- [x] Maryland provider data (9,000+ providers)
-- [x] Virginia provider data (7,000+ providers)
+### 2026 Q2 — Foundation
+- [x] NYC, DC, Maryland, Virginia (28,000+ providers)
 - [ ] Public API launch
+- [ ] Texas, Florida, California
 
-### 2026 Q3
-- [ ] Texas expansion (TX3C API)
+### 2026 Q3 — Scale
+- [ ] 25 states covered
 - [ ] Subsidy eligibility engine
 - [ ] Provider availability tracking
 
-### 2026 Q4
-- [ ] California integration
+### 2026 Q4 — National
+- [ ] All 50 states
 - [ ] Research partnership pilots
 - [ ] Community governance framework
 
